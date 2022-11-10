@@ -1,0 +1,69 @@
+CREATE DATABASE pannet_tcc
+
+USE pannet_tcc
+
+CREATE TABLE usuario
+(
+    id_usuario int identity primary key,
+	nick varchar(20) null,
+	email varchar(50) null,
+	senha varchar (15) null,
+	img_perfil varchar(1000) null,
+	data_insert varchar(30) null, 
+	data_update varchar(30) null, 
+	status varchar(30) null
+)
+
+CREATE TABLE postagem
+(
+    id_postagem int identity primary key,
+	texto varchar(3000) null,
+	img_post varchar(1000) null,
+	id_usuario int not null,
+	id_sala int not null,
+	id_amigos_usuario int not null,
+	data_insert varchar(30) null, 
+	data_update varchar(30) null, 
+	status varchar(30) null
+)
+
+CREATE TABLE sala 
+(
+    id_sala int identity primary key not null,
+	nome varchar(30) null,
+	img_sala varchar(1000) null,
+	data_insert varchar(30) null, 
+	data_update varchar(30) null, 
+	status varchar(30) null
+)
+
+CREATE TABLE amigos_usuario (
+   id_amigos int null,
+   id_usu_amigos_usuario int null,
+   data_amigos varchar(30) null,
+   status char(1) null
+)
+
+CREATE TABLE sala_usuario(
+	usuario_id int null,
+	sala_id int null,
+	foreign key (usuario_id) references usuario(id_usuario),
+	foreign key (sala_id) references sala(id_sala),
+	data_entrada varchar(30) null,
+	data_saida varchar(30) null,
+	adm char(1) null
+)
+
+
+
+/*create table amigos (
+   id_amigo int identity primary key,
+   id_amigos varchar(40),
+   data_insert varchar(30) null, 
+   data_update varchar(30) null, 
+   status varchar(30) null
+)*/
+
+/*FOREING KEY AMIGOS_USUARIO
+   foreign key (usuarioau_id) references usuario(id_usuario),
+   foreign key (amigos_id) references amigos(id_amigo)*/
